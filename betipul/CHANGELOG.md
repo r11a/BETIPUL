@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.1
+
+- תיקון אתחול PostgreSQL בתמונת Home Assistant App.
+- שימוש במחולל UUID המובנה ב־PostgreSQL 17 ללא תלות ב־pgcrypto.
+
 ## 0.1.0
 
 - ממשק עברי RTL רספונסיבי לניהול קליניקה.
