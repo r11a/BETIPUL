@@ -15,7 +15,7 @@ COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile --prod
 
 FROM ${BUILD_FROM}
-ARG BUILD_VERSION=0.1.3
+ARG BUILD_VERSION=0.1.4
 RUN apk add --no-cache ca-certificates nginx nodejs postgresql17 postgresql17-client su-exec
 COPY --from=web-builder /build/dist /var/www/betipul
 COPY --from=server-dependencies /build/node_modules /opt/betipul/node_modules

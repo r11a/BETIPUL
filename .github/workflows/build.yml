@@ -40,7 +40,7 @@ jobs:
       - name: Smoke test PostgreSQL, encryption, API and Nginx
         run: |
           trap 'docker logs betipul-smoke' ERR
-          docker run --detach --name betipul-smoke --publish 8787:8787 \
+          docker run --detach --name betipul-smoke --publish 8787:8787 --cap-drop FOWNER \
             --env BETIPUL_ADMIN_PASSWORD=ci-secure-password-123 \
             --env BETIPUL_BACKUP_PASSPHRASE=ci-backup-passphrase-123 \
             local/betipul:ci

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.4
+
+- תיקון אתחול PostgreSQL תחת פרופיל AppArmor ללא הרשאת `CAP_FOWNER`.
+- שינוי הרשאות תיקיית מסד הנתונים מתבצע כעת כבעלים `postgres` ולא כ־root.
+- בדיקת תמונה עם `FOWNER` חסום כדי לדמות את סביבת Home Assistant.
+
 ## 0.1.3
 
 - תיקון בניית כתובת ה־API כאשר נתיב Home Assistant Ingress אינו מסתיים בלוכסן.

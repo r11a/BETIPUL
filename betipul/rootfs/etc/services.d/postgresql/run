@@ -3,7 +3,8 @@ set -eu
 PGDATA=/data/postgresql
 mkdir -p "$PGDATA" /run/postgresql /data/backups /data/keys
 chown -R postgres:postgres "$PGDATA" /run/postgresql /data/backups
-chmod 700 "$PGDATA" /data/keys
+su-exec postgres chmod 700 "$PGDATA"
+chmod 700 /data/keys
 if [ ! -s "$PGDATA/PG_VERSION" ]; then
   su-exec postgres initdb -D "$PGDATA" --encoding=UTF8 --locale=C --auth-local=trust --auth-host=scram-sha-256
 fi
