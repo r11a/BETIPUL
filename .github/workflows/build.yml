@@ -66,6 +66,13 @@ jobs:
             http://127.0.0.1:8787/api/cases | grep --quiet 'תיק בדיקה'
           curl --fail --silent --cookie /tmp/betipul-cookies \
             http://127.0.0.1:8787/api/dashboard | grep --quiet '"stats"'
+          docker network create --subnet 172.30.32.0/23 betipul-ingress
+          docker network connect --ip 172.30.32.3 betipul-ingress betipul-smoke
+          docker run --rm --network betipul-ingress --ip 172.30.32.2 curlimages/curl:8.16.0 \
+            --fail --silent \
+            --header 'X-Remote-User-Id: ci-home-assistant-user' \
+            --header 'X-Remote-User-Display-Name: CI Home Assistant Admin' \
+            http://172.30.32.3:8099/api/bootstrap | grep --quiet '"role":"admin"'
       - name: Stop smoke-test container
         if: always()
         run: docker rm --force betipul-smoke || true

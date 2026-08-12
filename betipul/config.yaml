@@ -1,5 +1,5 @@
 name: "בטיפול"
-version: "0.1.1"
+version: "0.1.2"
 slug: "betipul"
 description: "סביבת עבודה פרטית למטפלים — תיקים, מפגשים, תיעוד וכספים"
 url: "https://github.com/r11a/BETIPUL"
@@ -30,7 +30,6 @@ schema:
   admin_username: str
   admin_password: password
   backup_passphrase: password
-webui: "http://[HOST]:[PORT:8787]"
 watchdog: "http://[HOST]:[PORT:8787]/health"
 backup: cold
 stage: experimental
