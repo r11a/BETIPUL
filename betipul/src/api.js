@@ -1,7 +1,7 @@
-export function apiUrl(path, pathname=globalThis.location?.pathname||'/') {
-  const basePath=pathname.endsWith('/')?pathname:`${pathname}/`;
+export function apiUrl(path, moduleUrl=import.meta.url) {
+  const baseUrl=new URL('../',moduleUrl);
   const apiPath=path.startsWith('/')?path:`/${path}`;
-  return `${basePath}api${apiPath}`;
+  return new URL(`api${apiPath}`,baseUrl).toString();
 }
 
 export async function api(path, options={}) {

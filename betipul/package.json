@@ -1,7 +1,7 @@
 {
   "name": "betipul-home-assistant-app",
   "private": true,
-  "version": "0.1.4",
+  "version": "0.1.5",
   "license": "UNLICENSED",
   "packageManager": "pnpm@11.16.0",
   "type": "module",
