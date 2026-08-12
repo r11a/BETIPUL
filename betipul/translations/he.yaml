@@ -1,0 +1,7 @@
+configuration:
+  admin_username:
+    name: "שם משתמש מנהל"
+  admin_password:
+    name: "סיסמת מנהל"
+  backup_passphrase:
+    name: "סיסמת הצפנת גיבויים"

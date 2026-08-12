@@ -1,0 +1,7 @@
+configuration:
+  admin_username:
+    name: "Administrator username"
+  admin_password:
+    name: "Administrator password"
+  backup_passphrase:
+    name: "Backup encryption passphrase"

@@ -1,0 +1,21 @@
+#!/usr/bin/with-contenv sh
+set -eu
+export PGHOST=/run/postgresql PGUSER=postgres PGDATABASE=betipul
+until pg_isready -q -h "$PGHOST" -U "$PGUSER"; do sleep 1; done
+cd /opt/betipul
+while true; do
+  if [ -s /data/restore.request ]; then
+    restore_file="$(cat /data/restore.request)"
+    case "$restore_file" in /data/backups/restore-*.dump) ;; *) echo "Invalid restore request"; rm -f /data/restore.request; exit 1 ;; esac
+    if [ ! -s "$restore_file" ]; then echo "Restore file missing"; rm -f /data/restore.request; exit 1; fi
+    dropdb --if-exists --force -h "$PGHOST" -U "$PGUSER" betipul
+    createdb -h "$PGHOST" -U "$PGUSER" betipul
+    pg_restore --no-owner --no-privileges -h "$PGHOST" -U "$PGUSER" -d betipul "$restore_file"
+    rm -f "$restore_file" /data/restore.request
+    echo "BETIPUL database restore completed"
+  fi
+  exit_code=
+  node server/index.js || exit_code=$?
+  if [ -s /data/restore.request ]; then continue; fi
+  exit "${exit_code:-1}"
+done

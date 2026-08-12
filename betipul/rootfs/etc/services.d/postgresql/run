@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv sh
+set -eu
+PGDATA=/data/postgresql
+mkdir -p "$PGDATA" /run/postgresql /data/backups /data/keys
+chown -R postgres:postgres "$PGDATA" /run/postgresql /data/backups
+chmod 700 "$PGDATA" /data/keys
+if [ ! -s "$PGDATA/PG_VERSION" ]; then
+  su-exec postgres initdb -D "$PGDATA" --encoding=UTF8 --locale=C --auth-local=trust --auth-host=scram-sha-256
+fi
+exec su-exec postgres postgres -D "$PGDATA" -c listen_addresses=127.0.0.1 -c unix_socket_directories=/run/postgresql

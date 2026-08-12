@@ -1,0 +1,71 @@
+name: Build
+'on':
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: betipul
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.16.0
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm run check
+      - run: pnpm run build
+
+  app-image:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build amd64 Home Assistant App image
+        uses: docker/build-push-action@v6
+        with:
+          context: betipul
+          platforms: linux/amd64
+          load: true
+          push: false
+          tags: local/betipul:ci
+      - name: Smoke test PostgreSQL, encryption, API and Nginx
+        run: |
+          trap 'docker logs betipul-smoke' ERR
+          docker run --detach --name betipul-smoke --publish 8787:8787 \
+            --env BETIPUL_ADMIN_PASSWORD=ci-secure-password-123 \
+            --env BETIPUL_BACKUP_PASSPHRASE=ci-backup-passphrase-123 \
+            local/betipul:ci
+          for attempt in $(seq 1 60); do
+            if curl --fail --silent http://127.0.0.1:8787/health | grep --quiet '"database":"ok"'; then
+              break
+            fi
+            sleep 2
+          done
+          curl --fail --silent http://127.0.0.1:8787/health | grep --quiet '"standaloneLoginReady":true'
+          curl --fail --silent --cookie-jar /tmp/betipul-cookies \
+            --header 'Content-Type: application/json' \
+            --data '{"username":"admin","password":"ci-secure-password-123"}' \
+            http://127.0.0.1:8787/api/auth/login | grep --quiet '"role":"admin"'
+          curl --fail --silent --cookie /tmp/betipul-cookies \
+            --header 'Content-Type: application/json' \
+            --data '{"displayName":"מטופל בדיקה","phone":"0500000000"}' \
+            http://127.0.0.1:8787/api/people | grep --quiet 'מטופל בדיקה'
+          docker exec betipul-smoke psql -U postgres -d betipul -Atc 'SELECT display_name_enc FROM people LIMIT 1' | grep --quiet '^btp1\.'
+          curl --fail --silent --cookie /tmp/betipul-cookies \
+            --header 'Content-Type: application/json' \
+            --data '{"title":"תיק בדיקה","type":"individual","defaultFee":350}' \
+            http://127.0.0.1:8787/api/cases | grep --quiet 'תיק בדיקה'
+          curl --fail --silent --cookie /tmp/betipul-cookies \
+            http://127.0.0.1:8787/api/dashboard | grep --quiet '"stats"'
+      - name: Stop smoke-test container
+        if: always()
+        run: docker rm --force betipul-smoke || true

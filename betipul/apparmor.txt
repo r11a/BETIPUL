@@ -1,0 +1,25 @@
+#include <tunables/global>
+profile betipul flags=(attach_disconnected,mediate_deleted) {
+  #include <abstractions/base>
+  file,
+  signal (send) set=(kill,term,int,hup,cont),
+  /init ix,
+  /bin/** ix,
+  /usr/bin/** ix,
+  /run/{s6,s6-rc*,service}/** rwix,
+  /package/** rix,
+  /command/** rix,
+  /etc/** r,
+  /opt/betipul/** rix,
+  /var/www/betipul/** r,
+  /data/** rwk,
+  /share/** rwk,
+  /run/postgresql/** rwk,
+  /tmp/** rwk,
+  /dev/null rw,
+  /dev/urandom r,
+  capability setuid,
+  capability setgid,
+  capability dac_override,
+  capability chown,
+}

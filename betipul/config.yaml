@@ -1,0 +1,36 @@
+name: "בטיפול"
+version: "0.1.0"
+slug: "betipul"
+description: "סביבת עבודה פרטית למטפלים — תיקים, מפגשים, תיעוד וכספים"
+url: "https://github.com/r11a/BETIPUL"
+arch:
+  - amd64
+  - aarch64
+startup: application
+boot: auto
+init: false
+ingress: true
+ingress_port: 8099
+ingress_entry: /
+panel_icon: mdi:heart-pulse
+panel_title: "בטיפול"
+panel_admin: true
+ports:
+  8787/tcp: null
+ports_description:
+  8787/tcp: "ממשק עצמאי — יש לחשוף רק מאחורי HTTPS או VPN"
+map:
+  - type: share
+    read_only: false
+options:
+  admin_username: "admin"
+  admin_password: "change-me-now"
+  backup_passphrase: "change-this-backup-passphrase"
+schema:
+  admin_username: str
+  admin_password: password
+  backup_passphrase: password
+webui: "http://[HOST]:[PORT:8787]"
+watchdog: "http://[HOST]:[PORT:8787]/health"
+backup: cold
+stage: experimental

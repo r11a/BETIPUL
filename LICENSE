@@ -1,0 +1,106 @@
+BETIPUL PROPRIETARY SOFTWARE LICENSE
+Version 1.0 — 12 August 2026
+
+Copyright (c) 2026 r11a. All Rights Reserved.
+
+1. OWNERSHIP
+
+The software known as "BETIPUL" / "בטיפול", including its source code,
+compiled code, database design, user interface, documentation, graphics,
+logos, branding, and all accompanying materials (collectively, the
+"Software"), is proprietary and is protected by copyright and other
+applicable laws. All rights not expressly granted in this License are
+reserved by the copyright holder.
+
+2. NO OPEN-SOURCE LICENSE
+
+The Software is not open-source software. Its availability in a public
+repository does not grant permission to copy, use, modify, publish,
+distribute, sublicense, sell, host, or create derivative works from it.
+
+3. LIMITED AUTHORIZED USE
+
+Only a person or entity that has received prior explicit written
+authorization from the copyright holder may download and install one copy of
+the Software solely for its own internal use on systems it owns or controls.
+This permission is personal, limited, revocable, non-exclusive,
+non-transferable, and non-sublicensable. A copy strictly necessary for backup
+or disaster recovery may be retained by an authorized user, subject to the
+same restrictions.
+
+4. PROHIBITED ACTS
+
+Without prior explicit written permission from the copyright holder, no
+person or entity may:
+
+a. copy or reproduce the Software, except as expressly allowed in Section 3;
+b. modify, adapt, translate, merge, or create derivative works;
+c. distribute, publish, transmit, mirror, sublicense, rent, lease, lend,
+   assign, sell, resell, or otherwise make the Software available to others;
+d. use the Software, or any part of it, in a commercial product, hosted
+   service, software-as-a-service offering, competing product, or training
+   material;
+e. remove or alter copyright, trademark, attribution, or proprietary notices;
+f. reverse engineer, decompile, or disassemble compiled distributions, except
+   only to the narrow extent such restriction is prohibited by mandatory law;
+g. use the name "BETIPUL", "בטיפול", its logo, visual identity, or other
+   branding without separate written permission; or
+h. use the Software or its contents to train, fine-tune, evaluate, or develop
+   an artificial-intelligence or machine-learning system, except where such a
+   restriction is unenforceable under mandatory law or binding platform terms.
+
+5. PUBLIC-REPOSITORY PLATFORM RIGHTS
+
+Nothing in this License limits the rights that must be granted to GitHub or
+GitHub users solely to operate, view, display, or fork a public repository
+through GitHub's functionality under GitHub's binding Terms of Service. Those
+platform rights do not grant permission to use, modify, distribute, deploy,
+commercialize, or exploit the Software outside the limited functionality and
+scope required by those Terms.
+
+6. CONTRIBUTIONS
+
+No contribution is accepted under an open-source inbound license. Any
+contribution requires a separate written agreement with the copyright holder.
+Submitting an issue or suggestion does not transfer ownership of the Software
+or grant any license to it.
+
+7. PRIVACY, CLINICAL, AND REGULATORY RESPONSIBILITY
+
+The Software is provided as a technical product and does not itself constitute
+legal, accounting, medical, privacy, security, or regulatory certification.
+An authorized user is solely responsible for lawful deployment, professional
+use, information-security procedures, backups, and compliance with all laws
+and professional obligations applicable to that user.
+
+8. NO WARRANTY
+
+THE SOFTWARE IS PROVIDED "AS IS" AND "AS AVAILABLE", WITHOUT WARRANTY OF ANY
+KIND, EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR
+A PARTICULAR PURPOSE, NON-INFRINGEMENT, SECURITY, AVAILABILITY, ACCURACY, OR
+REGULATORY COMPLIANCE. USE OF THE SOFTWARE IS AT THE USER'S SOLE RISK.
+
+9. LIMITATION OF LIABILITY
+
+TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE COPYRIGHT HOLDER WILL NOT BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, OR
+PUNITIVE DAMAGES, OR FOR LOSS, DISCLOSURE, CORRUPTION, OR UNAVAILABILITY OF
+CLINICAL, PERSONAL, OR FINANCIAL DATA, ARISING FROM OR RELATED TO THE SOFTWARE.
+
+10. TERMINATION
+
+Any authorization terminates automatically upon breach of this License. Upon
+termination, the user must stop using the Software and delete all copies,
+except where retention is required by mandatory law.
+
+11. GOVERNING LAW
+
+This License is governed by the laws of the State of Israel, without regard to
+conflict-of-law rules. Any dispute will be submitted to the competent courts
+in Israel, subject to any mandatory jurisdiction required by law.
+
+12. WRITTEN PERMISSION
+
+Requests for installation, commercial use, distribution, integration,
+modification, or any other permission must be approved in advance in writing
+by the copyright holder through the contact methods published by r11a.

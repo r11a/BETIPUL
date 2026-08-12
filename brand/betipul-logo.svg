@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320">
+  <rect width="960" height="320" rx="58" fill="#f7f8f5"/>
+  <g transform="translate(620 36) scale(.48)"><rect width="512" height="512" rx="150" fill="#e4eee6"/><path d="M256 382c-24-71-80-104-134-122 23-32 57-43 92-26-4-58 16-94 42-119 26 25 46 61 42 119 35-17 69-6 92 26-54 18-110 51-134 122Z" fill="#678c76"/></g>
+  <text x="560" y="155" text-anchor="end" direction="rtl" font-family="Arial" font-size="82" font-weight="700" fill="#30443a">בטיפול</text>
+  <text x="560" y="215" text-anchor="end" direction="rtl" font-family="Arial" font-size="29" fill="#7a8981">מרחב עבודה למטפלים</text>
+</svg>
