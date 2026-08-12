@@ -68,6 +68,11 @@ jobs:
             http://127.0.0.1:8787/api/dashboard | grep --quiet '"stats"'
           docker network create --subnet 172.30.32.0/23 betipul-ingress
           docker network connect --ip 172.30.32.3 betipul-ingress betipul-smoke
+          docker exec betipul-smoke nginx -V 2>&1 | grep --quiet -- '--with-http_sub_module'
+          docker run --rm --network betipul-ingress --ip 172.30.32.2 curlimages/curl:8.16.0 \
+            --fail --silent \
+            --header 'X-Ingress-Path: /api/hassio_ingress/ci-token' \
+            http://172.30.32.3:8099/ | grep --quiet 'content="/api/hassio_ingress/ci-token"'
           docker run --rm --network betipul-ingress --ip 172.30.32.2 curlimages/curl:8.16.0 \
             --fail --silent \
             --header 'X-Remote-User-Id: ci-home-assistant-user' \

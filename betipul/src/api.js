@@ -1,5 +1,6 @@
-export function apiUrl(path) {
+export function apiUrl(path, ingressPath=globalThis.document?.querySelector('meta[name="betipul-ingress-path"]')?.content||'') {
   const apiPath=path.startsWith('/')?path:`/${path}`;
+  if(ingressPath&&ingressPath!=='__BETIPUL_INGRESS_PATH__')return `${ingressPath.replace(/\/+$/,'')}/api${apiPath}`;
   return `./api${apiPath}`;
 }
 

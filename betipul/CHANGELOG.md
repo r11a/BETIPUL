@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.7
+
+- שימוש ישיר בכותרת הרשמית `X-Ingress-Path` של Home Assistant לבניית כתובות API.
+- הזרקת בסיס Ingress ל־HTML בזמן ההגשה ללא שמירה במסד, בלוג או bundle.
+- מניעת cache של `index.html` ובדיקת CI להזרקת נתיב Ingress מלאה.
+
 ## 0.1.6
 
 - חזרה לניתוב API יחסי סטנדרטי של Home Assistant Ingress לאחר שמסד הנתונים תוקן.
