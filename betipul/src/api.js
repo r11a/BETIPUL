@@ -1,7 +1,6 @@
-export function apiUrl(path, moduleUrl=import.meta.url) {
-  const baseUrl=new URL('../',moduleUrl);
+export function apiUrl(path) {
   const apiPath=path.startsWith('/')?path:`/${path}`;
-  return new URL(`api${apiPath}`,baseUrl).toString();
+  return `./api${apiPath}`;
 }
 
 export async function api(path, options={}) {
