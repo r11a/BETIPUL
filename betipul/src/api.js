@@ -1,7 +1,13 @@
+export function apiUrl(path, pathname=globalThis.location?.pathname||'/') {
+  const basePath=pathname.endsWith('/')?pathname:`${pathname}/`;
+  const apiPath=path.startsWith('/')?path:`/${path}`;
+  return `${basePath}api${apiPath}`;
+}
+
 export async function api(path, options={}) {
-  const response=await fetch(`api${path}`,{credentials:'same-origin',headers:{'Content-Type':'application/json',...(options.headers||{})},...options,body:options.body&&typeof options.body!=='string'?JSON.stringify(options.body):options.body});
+  const response=await fetch(apiUrl(path),{credentials:'same-origin',headers:{'Content-Type':'application/json',...(options.headers||{})},...options,body:options.body&&typeof options.body!=='string'?JSON.stringify(options.body):options.body});
   if(response.status===204)return null;
-  const data=await response.json().catch(()=>({}));
+  const data=await response.json().catch(()=>({error:`שגיאת תקשורת (${response.status})`}));
   if(!response.ok){const error=new Error(data.error||'הפעולה נכשלה');error.status=response.status;error.code=data.code;throw error;}
   return data;
 }
